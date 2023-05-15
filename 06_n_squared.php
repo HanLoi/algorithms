@@ -1,8 +1,8 @@
 <?php
 
 function recursiveFunction($n) {
-    if ($n <== 0) return;
-    for($i = $n; $i >= 0; $n--) {
+    if ($n <= 0) return;
+    for ($i = $n; $i >= 0; $n--) {
         echo $n;
     }
 
