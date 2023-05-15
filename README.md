@@ -31,26 +31,49 @@ Here is an example of a recursive function to calculate the factorial of a numbe
 
 ### recursive function (factorial) in python (01)
 
-`
-def factorial(n):
+`def factorial(n):
     # Base case: factorial of 0 or 1 is 1
     if n == 0 or n == 1:
         return 1
     # Recursive case: factorial of n is n * factorial(n-1)
     else:
-        return n * factorial(n-1)
-`
+        return n * factorial(n-1)`
 
 ## Complex recursion explained
 
-### exemple of recursive function by complexity
+### example of a recursive function from less to more complex
+
+#### Why is impossible to get a recursive function with O(1) complexity
+
+It is impossible to have a constant time complexity of O(1) with a recursive function because recursion involves repeated function calls and processing of subproblems. Each recursive call adds overhead in terms of function call stack and resource consumption. The number of recursive calls grows with the input size, meaning the algorithm's runtime scales with the size of the problem. Consequently, the time complexity of recursive functions is typically dependent on the input size and cannot be a constant O(1), which implies a fixed number of operations regardless of the input.
+
+#### recursive function with O(n) complexity
+
+`def recursiveTraversal(arr, index):
+    if index >= len(arr):
+        return
+    print(arr[index])
+    recursiveTraversal(arr, index + 1)`
+
+In this example, we have an input array arr and an index parameter representing the current index being traversed. The recursiveTraversal function recursively traverses the array and prints each element.
+
+Let's analyze the complexity of this recursive function:
+
+* The function performs a constant number of operations (printing the element) for each index in the array.
+* The number of recursive calls is directly proportional to the number of elements in the array, which is n.
+* Therefore, the total number of operations performed by the function is directly proportional to the size of the input array, resulting in a linear time complexity of O(n).
+
+As the index parameter increases from 0 to n-1, the function visits each element in the array exactly once, resulting in a linear traversal.
+
+It's important to note that the recursive function's stack space usage also increases linearly with the input size n, which should be taken into consideration when dealing with very large arrays or when recursion depth becomes a concern.
+
+In summary, this recursive function demonstrates linear time complexity O(n) as it performs a constant number of operations for each element in the array.
 
 #### recursive function with O(log n) complexity | 02
 
-Exemple with binary search function :
+Example with binary search function :
 
-`
-def binarySearch(arr, target, low, high):
+`def binarySearch(arr, target, low, high):
     if low > high:
         return -1
     mid = (low + high) // 2
@@ -59,8 +82,7 @@ def binarySearch(arr, target, low, high):
     elif arr[mid] < target:
         return binarySearch(arr, target, mid + 1, high)
     else:
-        return binarySearch(arr, target, low, mid - 1)
-`
+        return binarySearch(arr, target, low, mid - 1)`
 
 Here's how binary search works:
 
@@ -94,10 +116,10 @@ It's important to note that binary search requires the input array to be sorted.
 
 #### recursive function with O(n log n) complexity 
 
-Exemple with Mergesort algorithme :
+Example with Mergesort algorithme :
 
-`
-def mergeSort(arr):
+
+`def mergeSort(arr):
     if len(arr) <= 1:
         return arr
 
@@ -121,8 +143,7 @@ def merge(left, right):
 
     merged.extend(left[left_index:])
     merged.extend(right[right_index:])
-    return merged
-`
+    return merged`
 
 In this example, the mergeSort function takes an input array arr and recursively divides it into smaller subarrays until the base case is reached (when the array has only one element or is empty). Then, it merges the sorted subarrays back together using the merge function.
 
@@ -137,14 +158,12 @@ Therefore, as the size of the input array (n) increases, the number of recursive
 Merge sort is an efficient sorting algorithm that is often used for large input sizes due to its O(n log n) time complexity. Its divide-and-conquer approach and ability to handle large datasets make it a popular choice for sorting applications.
 ####  recursive function with O(n^2) complexity
 
-`
-def recursiveFunction(n):
+`def recursiveFunction(n):
     if n <= 0:
         return
     for i in range(n):
         print(i)
-    recursiveFunction(n - 1)
-`
+    recursiveFunction(n - 1)`
 
 In this example, we have a recursive function that takes an input n. The base case is when n is less than or equal to 0, at which point the function returns. Otherwise, the function enters the recursive case, where it performs a loop from 0 to n-1 and then makes a recursive call with the input n-1.
 
@@ -159,23 +178,20 @@ It's worth noting that recursive functions with O(n^2) complexity can be ineffic
 
 #### Recursive function with O(2^n) complexity
 
-`
-function fibonacci(n):
+`function fibonacci(n):
     if n <= 1:
         return n
-    return fibonacci(n-1) + fibonacci(n-2)
-`
+    return fibonacci(n-1) + fibonacci(n-2)`
+
 (The Fibonacci (03) sequence is a classic example with exponential complexity. Each recursive call generates two more recursive calls, leading to a runtime of O(2^n).)
 
 Same as 
 
-`
-def recursiveFunction(n):
+`def recursiveFunction(n):
     if n <= 0:
         return
     recursiveFunction(n - 1)
-    recursiveFunction(n - 2)
-`
+    recursiveFunction(n - 2)`
 
 In this example, we have a recursive function that takes an input n. The base case is when n is less than or equal to 0, at which point the function returns. Otherwise, the function enters the recursive case, where it makes two recursive calls, each with the input n-1.
 
@@ -192,8 +208,7 @@ It's important to note that exponential time complexity can quickly become compu
 
 #### Recursive function with O(n!) complexity (permutations) 
 
-`
-function permutations($string) {
+`function permutations($string) {
     $length = strlen($string);
     if ($length == 1) {
         return [$string];
@@ -208,8 +223,8 @@ function permutations($string) {
         }
     }
     return $result;
-}
-`
+}`
+
 In this example, we have a recursive function that takes an input n. The base case is when n is less than or equal to 1, at which point the function returns 1. Otherwise, the function enters the recursive case, where it performs a loop from 0 to n-1 and recursively calls itself with the input n-1. The results of the recursive calls are accumulated and returned.
 
 Let's analyze the complexity of this recursive function:
