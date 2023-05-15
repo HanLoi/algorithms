@@ -120,7 +120,7 @@ Binary search is a highly efficient algorithm for searching in sorted arrays due
 
 It's important to note that binary search requires the input array to be sorted. If the array is not sorted, additional steps will be needed to sort it, resulting in a different time complexity.
 
-#### 4.recursive function with O(n log n) complexity 
+#### 4.recursive function with O(n log n) complexity | 04
 
 Example with Mergesort algorithme :
 
@@ -164,7 +164,7 @@ Let's analyze the complexity of this merge sort algorithm:
 Therefore, as the size of the input array (n) increases, the number of recursive calls increases logarithmically, and the merging step takes linear time. The overall runtime of merge sort grows in a near-linear, or O(n log n), fashion.
 
 Merge sort is an efficient sorting algorithm that is often used for large input sizes due to its O(n log n) time complexity. Its divide-and-conquer approach and ability to handle large datasets make it a popular choice for sorting applications.
-#### 5.Recursive function with O(n^2) complexity
+#### 5.Recursive function with O(n^2) complexity | 05
 
 ```
 def recursiveFunction(n):
@@ -186,7 +186,7 @@ Therefore, the total number of iterations can be computed as the sum of the inte
 
 It's worth noting that recursive functions with O(n^2) complexity can be inefficient for large values of n due to the quadratic growth in the number of iterations. If possible, consider optimizing the algorithm by exploring alternative approaches or employing memoization techniques to avoid redundant computations.
 
-#### 6.Recursive function with O(2^n) complexity
+#### 6.Recursive function with O(2^n) complexity | 06 
 
 ```
 function fibonacci(n):
@@ -220,7 +220,7 @@ Hence, the time complexity of this recursive function is O(2^n). As the input si
 
 It's important to note that exponential time complexity can quickly become computationally infeasible for larger input sizes. If possible, consider optimizing the algorithm by exploring alternative approaches, such as dynamic programming or memoization, to reduce the exponential growth and improve the efficiency of the solution.
 
-#### 7.Recursive function with O(n!) complexity (permutations) 
+#### 7.Recursive function with O(n!) complexity | 07
 
 ```
 function permutations($string) {
@@ -250,6 +250,92 @@ Let's analyze the complexity of this recursive function:
 * Therefore, the total number of iterations can be computed as the product of the integers from 1 to n, which is n! (n factorial).
 
 Hence, the time complexity of this recursive function is O(n!). As the input size (n) increases, the number of iterations grows factorially, resulting in a rapidly increasing runtime.
+
+### Combination
+
+```
+function combine($elements, $k) {
+    if ($k == 0 || count($elements) == 0) {
+        return [[]];
+    } else {
+        $result = [];
+        $first = $elements[0];
+        $remaining = array_slice($elements, 1);
+        foreach (combine($remaining, $k - 1) as $combination) {
+            array_push($combination, $first);
+            $result[] = $combination;
+        }
+        $result = array_merge($result, combine($remaining, $k));
+        return $result;
+    }
+}
+```
+The combination algorithm follows these steps:
+
+1. Base case: If k (the desired combination size) is 0 or there are no more elements to choose from (i.e., the input array is empty), the current combination is complete. At this point, we add the combination to the result set and return it.
+
+2. Recursive case: If k is greater than 0 and there are still elements to choose from, we iterate through each element in the array.
+
+3. For each element, we create a new combination by including the current element and recursively generating combinations with k-1 elements from the remaining elements.
+
+4. We recursively call the combination function with the remaining elements and k-1. The remaining elements are obtained by creating a new array that excludes the current element.
+
+5. The recursive call returns all the combinations for the remaining elements and k-1. We store these combinations in a temporary array.
+
+6. Finally, we merge the combinations obtained from the recursive call with the current element appended to each of them. This ensures that all combinations including the current element are included in the result set.
+
+7. Once we have iterated through all elements and collected the combinations, we return the result set.
+
+The recursive approach continues this process until all possible combinations of size k are generated. Each recursive call explores a different branch of the combination tree, ensuring that all possible combinations are covered.
+
+By constructing combinations incrementally using recursive calls, we systematically generate all distinct subsets of the input elements of a specific size k.
+
+### Permutation 
+
+```
+function permuteRecursive($elements, $permutation = []) {
+    if (empty($elements)) {
+        // Base case: All elements have been used, add the permutation to the result
+        return [$permutation];
+    } else {
+        $result = [];
+        for ($i = 0; $i < count($elements); $i++) {
+            // Choose an element from the remaining elements
+            $newPermutation = $permutation;
+            $newPermutation[] = $elements[$i];
+
+            // Generate permutations of the remaining elements
+            $remainingElements = $elements;
+            array_splice($remainingElements, $i, 1);
+            $permutations = permuteRecursive($remainingElements, $newPermutation);
+
+            // Add the permutations to the result
+            $result = array_merge($result, $permutations);
+        }
+        return $result;
+    }
+}
+```
+The permutation algorithm follows these steps:
+
+1. Base case: If there are no more elements to permute (i.e., the input array is empty), the current permutation is complete. At this point, we add the permutation to the result set and return it.
+
+2. Recursive case: If there are still elements to permute, we iterate through each element in the array.
+
+3. For each element, we create a new permutation by appending the current element to the existing permutation. This new permutation becomes the updated permutation for the recursive call.
+
+4. We then recursively call the permutation function with the remaining elements. The remaining elements are obtained by creating a new array that excludes the current element.
+
+5. The recursive call returns all the permutations for the remaining elements. We store these permutations in a temporary array.
+
+6. Finally, we merge the permutations obtained from the recursive call with the current element appended to each of them. This ensures that all permutations including the current element are included in the result set.
+
+7. Once we have iterated through all elements and collected the permutations, we return the result set.
+
+The recursive approach continues this process until all possible permutations are generated. Each recursive call explores a different branch of the permutation tree, ensuring that all possible combinations are covered.
+
+By constructing permutations incrementally using recursive calls, we systematically generate all the distinct arrangements of the input elements.
+
 ### Tips
 
 When dealing with recursive functions, managing complexity is crucial to ensure efficient and correct execution. Here are some tips:
