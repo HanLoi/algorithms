@@ -45,11 +45,11 @@ def factorial(n):
 
 ### example of a recursive function from less to more complex
 
-#### Why is impossible to get a recursive function with O(1) complexity
+#### 1.Why is impossible to get a recursive function with O(1) complexity
 
 It is impossible to have a constant time complexity of O(1) with a recursive function because recursion involves repeated function calls and processing of subproblems. Each recursive call adds overhead in terms of function call stack and resource consumption. The number of recursive calls grows with the input size, meaning the algorithm's runtime scales with the size of the problem. Consequently, the time complexity of recursive functions is typically dependent on the input size and cannot be a constant O(1), which implies a fixed number of operations regardless of the input.
 
-#### recursive function with O(n) complexity
+#### 2.Recursive function with O(n) complexity | 02
 
 ```
 def recursiveTraversal(arr, index):
@@ -73,7 +73,7 @@ It's important to note that the recursive function's stack space usage also incr
 
 In summary, this recursive function demonstrates linear time complexity O(n) as it performs a constant number of operations for each element in the array.
 
-#### recursive function with O(log n) complexity | 02
+#### 3.Recursive function with O(log n) complexity | 03
 
 Example with binary search function :
 
@@ -120,7 +120,7 @@ Binary search is a highly efficient algorithm for searching in sorted arrays due
 
 It's important to note that binary search requires the input array to be sorted. If the array is not sorted, additional steps will be needed to sort it, resulting in a different time complexity.
 
-#### recursive function with O(n log n) complexity 
+#### 4.recursive function with O(n log n) complexity 
 
 Example with Mergesort algorithme :
 
@@ -164,7 +164,7 @@ Let's analyze the complexity of this merge sort algorithm:
 Therefore, as the size of the input array (n) increases, the number of recursive calls increases logarithmically, and the merging step takes linear time. The overall runtime of merge sort grows in a near-linear, or O(n log n), fashion.
 
 Merge sort is an efficient sorting algorithm that is often used for large input sizes due to its O(n log n) time complexity. Its divide-and-conquer approach and ability to handle large datasets make it a popular choice for sorting applications.
-####  recursive function with O(n^2) complexity
+#### 5.Recursive function with O(n^2) complexity
 
 ```
 def recursiveFunction(n):
@@ -186,7 +186,7 @@ Therefore, the total number of iterations can be computed as the sum of the inte
 
 It's worth noting that recursive functions with O(n^2) complexity can be inefficient for large values of n due to the quadratic growth in the number of iterations. If possible, consider optimizing the algorithm by exploring alternative approaches or employing memoization techniques to avoid redundant computations.
 
-#### Recursive function with O(2^n) complexity
+#### 6.Recursive function with O(2^n) complexity
 
 ```
 function fibonacci(n):
@@ -220,7 +220,7 @@ Hence, the time complexity of this recursive function is O(2^n). As the input si
 
 It's important to note that exponential time complexity can quickly become computationally infeasible for larger input sizes. If possible, consider optimizing the algorithm by exploring alternative approaches, such as dynamic programming or memoization, to reduce the exponential growth and improve the efficiency of the solution.
 
-#### Recursive function with O(n!) complexity (permutations) 
+#### 7.Recursive function with O(n!) complexity (permutations) 
 
 ```
 function permutations($string) {
